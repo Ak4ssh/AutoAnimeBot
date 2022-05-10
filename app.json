@@ -1,111 +1,38 @@
 {
-    "name": "TgVcUser",
-    "description": "A Telegram UserBot To Play Audio In Groups",
-    "logo": "https://telegra.ph/file/4fb76ab8b828d3baeed3a.jpg",
+    "name": "Anime Gallery Bot",
+    "description": "Telegram Bot is for downloading any anime direclty via links in multiple quality",
     "keywords": [
-        "Telegram",
-        "VCBot",
-        "MusicPlayer"
+      "telegram",
+      "best",
+      "anime download",
+      "anime",
+      "manga",
+      "manga download"
     ],
-    "repository": "https://github.com/Desinobita/TgVcUsers",
+    "success_url": "https://t.me/Anime_Gallery_Robot",
+    "website": "https://github.com/MiyukiKun",
+    "repository": "https://github.com/MiyukiKun/Anime_Gallery_Bot",
     "env": {
-        "SESSION": {
-            "description": "Pyrogram String Session.",
-            "required": true
-        },
-        "API_ID": {
-            "description": "my.telegram.org",
-            "required": true
-        },
-        "SESSION2": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION3": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION4": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION5": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION6": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION7": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION8": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION9": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION10": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION11": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION12": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION13": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION14": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "SESSION15": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "ALIVE_PIC": {
-            "description": "Pyrogram String Session",
-            "required": false
-        },
-        "API_HASH": {
-            "description": "my.telegram.org",
-            "required": true
-        },
-        "HNDLR": {
-            "description": "Handler | Default (!)",
-            "value": "!",
-            "required": false 
-        },
-        "GROUP_MODE": {
-            "description": "Anyone can play, if set to True. Set it to False to restrict play access to Sudo Users/Contacts only",
-            "value": "True",
-            "required": true 
-        }
+      "API_ID": {
+        "description": "Get this value from https://my.telegram.org",
+        "value": ""
+      },
+      "API_HASH": {
+        "description": "Get this value from https://my.telegram.org",
+        "value": ""
+      },
+       "BOT_TOKEN": {
+        "description": "Your bot token, as a string. Get it from @BotFather on telegram",
+        "value": ""
+      }
     },
-    "addons": [],
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        },
-        {
-            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-        }
-    ],
+    "buildpacks": [{
+      "url": "heroku/python"
+    }],
     "formation": {
-        "worker": {
-            "quantity": 1,
-            "size": "free"
-        }
-    },
-    "stack": "container"
-}
+      "worker": {
+        "quantity": 1,
+        "size": "free"
+      }
+    }
+  }
