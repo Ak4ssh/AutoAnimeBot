@@ -25,7 +25,7 @@
         "description": "Your bot token, as a string. Get it from @BotFather on telegram",
         "value": ""
       }
-    },
+  },
     "buildpacks": [{
       "url": "heroku/python"
     }],
