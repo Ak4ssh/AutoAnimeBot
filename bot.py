@@ -27,8 +27,12 @@ else:
     session_name = "startup"
     bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
-tochnl = config("Var.TO_CHANNEL", cast=int)
-frm = config("Var.FROM_CHANNEL", cast=int)
+try:
+    tochnl = config("Var.TO_CHANNEL", cast=int)
+    frm = config("Var.FROM_CHANNEL", cast=int)
+except:
+    print("Scamed")
+    exit()
 
 
 @bot.on(events.NewMessage(incoming=True, chats=frm))
