@@ -28,8 +28,8 @@ else:
     bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
 try:
-    tochnl = config("Var.TO_CHANNEL", cast=int)
-    frm = config("Var.FROM_CHANNEL", cast=int)
+    tochnl = config("TO_CHANNEL", cast=int)
+    frm = config("FROM_CHANNEL", cast=int)
 except:
     print("Scamed")
     exit()
