@@ -1,4 +1,2 @@
+python-decouple
 telethon
-requests_html
-requests
-bs4
