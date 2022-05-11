@@ -1,4 +1,4 @@
-
+import os
 import logging
 import asyncio
 from telethon import TelegramClient, events, Button
@@ -13,16 +13,30 @@ print("Starting...")
 print("Initializing RyzenApi")
 print("Initializing Repo")
 
+class Var(object):
+    STRING = os.environ.get("STRING", None)
+    APP_ID = int(os.environ.get("APP_ID", 6))
+    API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
+    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
+    TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
+ 
 apiid = config("APP_ID", cast=int)
 apihash = config("API_HASH")
 session = config("STRING")
 frm = config("FROM_CHANNEL", cast=int)
 tochnl = config("TO_CHANNEL", cast=int)
-datgbot = TelegramClient(StringSession(STRING), APP_ID, API_HASH)
+
+if STRING:
+    session_name = str(STRING)
+    bot = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
+else:
+    session_name = "startup"
+    bot = TelegramClient(session_name, APP_ID, API_HASH)
 
 
 
-@datgbot.on(events.NewMessage(incoming=True, chats=frm))
+
+@bot.on(events.NewMessage(incoming=True, chats=frm))
 async def _(event): 
     if not event.is_private:
         try:
@@ -30,21 +44,21 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await datgbot.send_file(tochnl, photo, caption = event.text, link_preview = False)
+                await bot.send_file(tochnl, photo, caption = event.text, link_preview = False)
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await datgbot.send_message(tochnl, event.text, link_preview = False)
+                        await bot.send_message(tochnl, event.text, link_preview = False)
                         return
                 except:
                     media = event.media.document
-                    await datgbot.send_file(tochnl, media, caption = event.text, link_preview = False)
+                    await bot.send_file(tochnl, media, caption = event.text, link_preview = False)
                     return
             else:
-                await datgbot.send_message(tochnl, event.text, link_preview = False)
+                await bot.send_message(tochnl, event.text, link_preview = False)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
 
 print("Bot Initialized Perhaps Started!")
-datgbot.run_until_disconnected()
+bot.run_until_disconnected()
