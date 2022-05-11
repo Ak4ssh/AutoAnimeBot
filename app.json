@@ -12,8 +12,8 @@
     "website": "xditya.me",
     "success_url": "https://t.me/BotzHub",
     "env": {
-        "BOT_TOKEN": {
-            "description": "Bot token, get it from @BotFather.",
+        "SESSION": {
+            "description": "Get From Any Telethon Repl.",
             "value": ""
         },
         "APP_ID": {
