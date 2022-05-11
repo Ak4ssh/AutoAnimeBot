@@ -27,15 +27,8 @@ else:
     session_name = "startup"
     bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
-try:
-    tochnl = config("TO_CHANNEL", cast=int)
-    frm = config("FROM_CHANNEL", cast=int)
-except:
-    print("Scamed")
-    exit()
 
-
-@bot.on(events.NewMessage(incoming=True, chats=frm))
+@bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
     if not event.is_private:
         try:
@@ -43,18 +36,18 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(tochnl, photo, caption = event.text, link_preview = False)
+                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False)
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(tochnl, event.text, link_preview = False)
+                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(tochnl, media, caption = event.text, link_preview = False)
+                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False)
                     return
             else:
-                await bot.send_message(tochnl, event.text, link_preview = False)
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
