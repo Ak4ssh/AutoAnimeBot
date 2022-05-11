@@ -13,14 +13,12 @@ print("Starting...")
 print("Initializing RyzenApi")
 print("Initializing Repo")
 
-session_name = str(STRING)
-
 apiid = config("APP_ID", cast=int)
 apihash = config("API_HASH")
 session = config("STRING")
 frm = config("FROM_CHANNEL", cast=int)
 tochnl = config("TO_CHANNEL", cast=int)
-datgbot = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
+datgbot = TelegramClient(StringSession(STRING), APP_ID, API_HASH)
 
 
 
