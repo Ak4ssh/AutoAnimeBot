@@ -12,7 +12,7 @@
     "website": "xditya.me",
     "success_url": "https://t.me/BotzHub",
     "env": {
-        "SESSION": {
+        "STRING": {
             "description": "Get From Any Telethon Repl.",
             "value": ""
         },
