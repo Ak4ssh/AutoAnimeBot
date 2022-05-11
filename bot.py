@@ -20,30 +20,6 @@ try:
     frm = config("FROM_CHANNEL", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
 
-    if STRING: 
-        session_name = str(STRING)
-        print("String 1 Found")
-        datgbot = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
-        try:
-            print("Booting Up The Client 1")
-            await datgbot.start()
-            botme = await datgbot.get_me()
-            botid = telethon.utils.get_peer_id(botme)
-            CLIENTS.append(botid)
-        except Exception as e:
-            print(e)
-            pass
-    else:
-        print("Session 1 not Found")
-        pass
-        session_name = "AutoAnimeBot"
-        datgbot = TelegramClient(session_name, APP_ID, API_HASH)
-        try:
-            await datgbot.start()
-        except Exception as e:
-            print(str(e))
-except Exception as e:
-    print(str(e))
 
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm))
