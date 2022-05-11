@@ -12,11 +12,11 @@ class start():
             await client.get_chat_member(TheVenomXD, user)
         except UserNotParticipant:
             return await message.reply_text("You need to join @channel username to use me.", disable_web_page_preview=True)
-                await bot.send_message(
-                    event.chat_id,
-                    start_text,
-                    file='https://tenor.com/view/chika-fujiwara-kaguya-sama-love-is-war-anime-wink-smile-gif-18043249'
-                )
+            await bot.send_message(
+                event.chat_id,
+                start_text,
+                file='https://tenor.com/view/chika-fujiwara-kaguya-sama-love-is-war-anime-wink-smile-gif-18043249'
+            )
 
     @bot.on(events.NewMessage(pattern=r"^/help$|^"))
     async def event_handler_help(event):
