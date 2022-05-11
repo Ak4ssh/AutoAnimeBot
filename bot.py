@@ -16,7 +16,7 @@ try:
     apiid = config("APP_ID", cast=int)
     apihash = config("API_HASH")
     session = config("STRING")
-    frm = config("FROM_CHANNEL", cast=int)
+    frm = config("FROM_CHANNEL")
     tochnl = config("TO_CHANNEL", cast=int)
     
     if STRING: 
@@ -43,8 +43,8 @@ try:
             pass
 
    
-@datgbot.on(events.NewMessage(incoming=True, chats=frm)) 
-async def (_event): 
+@datgbot.on(events.NewMessage(incoming=True, chats=frm)
+async def _(event): 
     if not event.is_private:
         try:
             if event.poll:
