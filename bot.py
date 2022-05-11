@@ -18,18 +18,17 @@ try:
     session = config("STRING")
     frm = config("FROM_CHANNEL", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
-    datgbot = TelegramClient(StringSession(STRING), APP_ID, API_HASH)
     
     if STRING: 
         session_name = str(STRING)
         print("String 1 Found")
-        Akash = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
+        datgbot = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
         try:
             print("Booting Up The Client 1")
-            await Akash.start()
-            await Akash(functions.account.UpdateProfileRequest(last_name="• 1 •"))
-            await Akash(functions.channels.JoinChannelRequest(channel="@ArrayCore"))
-            botme = await Akash.get_me()
+            await datgbot.start()
+            await datgbot(functions.account.UpdateProfileRequest(last_name="• 1 •"))
+            await datgbot(functions.channels.JoinChannelRequest(channel="@ArrayCore"))
+            botme = await datgbot.get_me()
             botid = telethon.utils.get_peer_id(botme)
             CLIENTS.append(botid)
         except Exception as e:
@@ -38,10 +37,10 @@ try:
     else:
         print("Session 1 not Found")
         pass
-        session_name = "rizoelxspam"
-        Akash = TelegramClient(session_name, APP_ID, API_HASH)
+        session_name = "AutoAnimeBot"
+        datgbot = TelegramClient(session_name, APP_ID, API_HASH)
         try:
-            await Akash.start()
+            await datgbot.start()
         except Exception as e:
             pass
 
