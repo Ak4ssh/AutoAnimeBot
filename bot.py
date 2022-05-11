@@ -26,8 +26,6 @@ try:
         try:
             print("Booting Up The Client 1")
             await datgbot.start()
-            await datgbot(functions.account.UpdateProfileRequest(last_name="• 1 •"))
-            await datgbot(functions.channels.JoinChannelRequest(channel="@ArrayCore"))
             botme = await datgbot.get_me()
             botid = telethon.utils.get_peer_id(botme)
             CLIENTS.append(botid)
