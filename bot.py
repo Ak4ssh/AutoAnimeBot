@@ -43,7 +43,7 @@ try:
             pass
 
    
-@datgbot.on(events.NewMessage(incoming=True, chats=frm)
+@datgbot.on(events.NewMessage(incoming=True, chats=frm))
 async def _(event): 
     if not event.is_private:
         try:
