@@ -7,4 +7,4 @@ bot_token = os.environ.get('BOT_TOKEN')
 tsession = os.environ.get('TSESSION)
 
 bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
-Client = TelegramClient('Client, api_id, api_hash).start(tsession=tsession)
+Client = TelegramClient('Client', api_id, api_hash).start(tsession=tsession)
