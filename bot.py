@@ -20,12 +20,12 @@ class Var(object):
     FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
 
-if STRING:
-    session_name = str(STRING)
-    bot = TelegramClient(StringSession(session_name), APP_ID, API_HASH)
+if Var.STRING:
+    session_name = str(Var.STRING)
+    bot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
 else:
     session_name = "startup"
-    bot = TelegramClient(session_name, APP_ID, API_HASH)
+    bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
 
 
