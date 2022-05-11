@@ -19,12 +19,6 @@ class Var(object):
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
     FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
- 
-apiid = config("APP_ID", cast=int)
-apihash = config("API_HASH")
-session = config("STRING")
-frm = config("FROM_CHANNEL", cast=int)
-tochnl = config("TO_CHANNEL", cast=int)
 
 if STRING:
     session_name = str(STRING)
