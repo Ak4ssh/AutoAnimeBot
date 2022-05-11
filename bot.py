@@ -12,13 +12,14 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 print("Starting...")
 print("Initializing RyzenApi")
 print("Initializing Repo")
+
 try:
     apiid = config("APP_ID", cast=int)
     apihash = config("API_HASH")
     session = config("STRING")
-    frm = config("FROM_CHANNEL")
+    frm = config("FROM_CHANNEL", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
-    
+
     if STRING: 
         session_name = str(STRING)
         print("String 1 Found")
@@ -40,9 +41,11 @@ try:
         try:
             await datgbot.start()
         except Exception as e:
-            pass
+            print(str(e))
+except Exception as e:
+    print(str(e))
 
-   
+
 @datgbot.on(events.NewMessage(incoming=True, chats=frm))
 async def _(event): 
     if not event.is_private:
