@@ -19,6 +19,11 @@ class Var(object):
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
     FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+
+anibot = TelegramClient('anibot', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
+
+anibot.start()
 
 if Var.STRING:
     session_name = str(Var.STRING)
@@ -28,6 +33,12 @@ else:
     bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
 bot.start()
+
+
+@anibot.on(events.NewMessage(pattern="/start"))
+async def _(event):
+    ok = await datgbot(GetFullUserRequest(event.sender_id))
+    await event.reply(f"Hi ||{ok.user.first_name}||!\n\nI am an Auto Anime bot!!\n\nRead /help to know more about me\n\nI am a part of @ArrayCore")
 
 @bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
