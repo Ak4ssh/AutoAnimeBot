@@ -21,7 +21,7 @@ class Var(object):
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
-anibot = TelegramClient('anibot', APP_ID, API_HASH).start(bot_token=BOT_TOKEN)
+anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
 anibot.start()
 
