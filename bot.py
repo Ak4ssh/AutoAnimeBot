@@ -59,7 +59,7 @@ async def _(event):
                     await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]) ))
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = Falsereply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]) ))
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]) ))
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
