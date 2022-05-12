@@ -48,18 +48,18 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]))
+                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False)
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]))
+                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]))
+                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False)
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("•ᴡᴀᴛᴄʜ•", url=f"https://t.me/TheVenomXD")]]))
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
