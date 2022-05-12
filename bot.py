@@ -38,7 +38,7 @@ bot.start()
 @anibot.on(events.NewMessage(pattern="/start"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi ||{ok.user.first_name}||!\n\nI am an Auto Anime bot!!\n\nRead /help to know more about me\n\nI am a part of @ArrayCore")
+    await event.reply(f"Hi ||{ok.user.first_name}||!\n\nI am an Auto Anime bot!!\n\nRead /help to know more about me\n\nA part of @ArrayCore\n\n Made With ❤ By @TheVenomXD")
 
 @bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
