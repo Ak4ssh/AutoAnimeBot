@@ -20,6 +20,7 @@ class Var(object):
     FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+    FEED_URL= os.environ.get("FEED_URL", None)
 
 anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
@@ -62,18 +63,17 @@ async def _(event):
                 await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
-prev=None
-#FEED_URL='https://honeysanime.com/feed/'
-#i=1
+
+
 def send_msg(title,msg):
     print("Detected a new release!")
     headers={'Connection':'close'}
-    requests.Session().post(f'https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage?chat_id='+CHANNEL_ID+'&text='+title+'%0A'+msg, headers=headers)
+    requests.Session().post(f'https://api.telegram.org/bot'+Var.BOT_TOKEN+'/sendMessage?chat_id='+Var.TO_CHANNEL+'&text='+title+'%0A'+msg, headers=headers)
     
 def main():
     prev=None #a shit scheme to save previous title to stop repitition
     #print("running..."+str(i), end='\r')
-    news=feedparser.parse(FEED_URL)
+    news=feedparser.parse(Var.FEED_URL)
     for entry in news.entries:
         parsed_date = parser.parse(entry.published).replace(tzinfo=None)
         #parsed_date = (parsed_date - timedelta(hours=8)).replace(tzinfo=None)
