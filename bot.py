@@ -5,6 +5,7 @@ from telethon import TelegramClient, events, Button
 from decouple import config
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.sessions import StringSession
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
@@ -35,6 +36,14 @@ else:
 
 bot.start()
 
+buttons = [
+    [
+        InlineKeyboardButton(text="Support Chat", url="https://t.me/Suzune_Support"),
+        InlineKeyboardButton(
+            text="Updates Channel", url="https://t.me/SuzuneSuperbot"),
+    ],
+]
+
 
 @anibot.on(events.NewMessage(pattern="/start"))
 async def _(event):
@@ -49,18 +58,18 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False)
+                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
+                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False)
+                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
