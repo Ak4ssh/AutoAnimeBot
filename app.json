@@ -1,6 +1,6 @@
 {
     "name": "Channel Auto Post",
-    "description": "Channel Auto Post Bot for telegram, by @BotzHub.",
+    "description": "Channel Auto Post Bot for telegram.",
     "logo": "",
     "keywords": [
         "telegram",
@@ -25,8 +25,12 @@
             "value": ""
         },
         "API_HASH": {
-            "API_HASH": "Your api hash from my.telegram.org",
+            "description": "Your api hash from my.telegram.org",
             "value": ""
+        },
+        "FEED_URL": {
+            "description": "Be This Like This Dont Spell!",
+            "value": "http://animeschedule.net/subrss.xml"
         },
         "FROM_CHANNEL": {
             "description": "The ID of the main channel from where posts have to be copied.",
@@ -36,10 +40,26 @@
             "description": "The ID of the channel to which the posts are to be sent.",
             "value": ""
         }
-    },
-    "buildpacks": [
-        {
-            "url": "heroku/python"
-        }
-    ]
+   },
+  "addons": [{
+    "plan": "heroku-postgresql",
+    "options": {
+      "version": "13"
+    }
+  }],
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-google-chrome"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
+  },{
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  },{
+    "url": "https://github.com/heroku/heroku-buildpack-apt.git"
+  },{
+    "url": "https://github.com/chrismytton/heroku-buildpack-jq"
+  },{
+    "url": "heroku/python"
+  }]
 }
