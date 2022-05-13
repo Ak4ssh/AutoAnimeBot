@@ -62,7 +62,30 @@ async def _(event):
                 await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+prev=None
+#FEED_URL='https://honeysanime.com/feed/'
+#i=1
+def send_msg(title,msg):
+    print("Detected a new release!")
+    headers={'Connection':'close'}
+    requests.Session().post(f'https://api.telegram.org/bot'+BOT_TOKEN+'/sendMessage?chat_id='+CHANNEL_ID+'&text='+title+'%0A'+msg, headers=headers)
+    
+def main():
+    prev=None #a shit scheme to save previous title to stop repitition
+    #print("running..."+str(i), end='\r')
+    news=feedparser.parse(FEED_URL)
+    for entry in news.entries:
+        parsed_date = parser.parse(entry.published).replace(tzinfo=None)
+        #parsed_date = (parsed_date - timedelta(hours=8)).replace(tzinfo=None)
+        now_date = datetime.utcnow()
 
+        published_2_minutes_ago = now_date - parsed_date < timedelta(minutes=2)
+        #print(published_5_minutes_ago)
+        if published_2_minutes_ago and entry.title!=prev:
+            if prev==None:
+                prev=entry.title
+            send_msg(entry.title,entry.links[0].href)
+            print(entry.links[0].href)    
 
 print("Bot Initialized Perhaps Started!")
 bot.run_until_disconnected()
