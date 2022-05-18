@@ -1,6 +1,7 @@
 import os
 import logging
 import asyncio
+import telegram
 from telethon import TelegramClient, events, Button
 from decouple import config
 from telethon.tl.functions.users import GetFullUserRequest
