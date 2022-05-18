@@ -6,7 +6,7 @@ from telethon import TelegramClient, events, Button
 from decouple import config
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.sessions import StringSession
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telethon import Button
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
@@ -37,13 +37,18 @@ else:
 
 bot.start()
 
-buttons = [
-    [
-        InlineKeyboardButton(text="Support Chat", url="https://t.me/Suzune_Support"),
-        InlineKeyboardButton(
-            text="Updates Channel", url="https://t.me/SuzuneSuperbot"),
-    ],
-]
+btn = [
+      [ 
+      Button.url("• Watch •", "https://t.me/TheVenomXD"),
+      Button.url("• Comments •", "https://t.me/DNHxHELL")
+      ],
+      [
+      Button.url("• Support •", "t.me/TheVenomXD")
+      ],
+      [
+      Button.inline("• Chat Group •", "t.me/TheVenomXD")
+      ],
+      ]
 
 
 @anibot.on(events.NewMessage(pattern="/start"))
@@ -59,18 +64,18 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
+                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False, buttons=btn)
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
+                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
+                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, buttons=btn)
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, reply_markup=InlineKeyboardMarkup(buttons))
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
