@@ -44,8 +44,9 @@ piclist = [
 ]
     
 Array = choice(piclist)
+bisi = "/"
 
-@anibot.on(events.NewMessage(pattern="/start"))
+@anibot.on_message(filters.private & filters.incoming & filters.command(['/start']))
 async def _start(_, ok: Message):
         animu = f"**Hi {ok.user.first_name}!\n\nI Am An Auto Anime Bot Uploads Latest Anime That Are Being Alerted On __animepahe.com__\n\nCurrently Uploading & Alerting About New Animes On @{TO_CHANNEL}\n\nMade With ❤**"
         await ok.reply_photo(
@@ -61,7 +62,7 @@ async def _start(_, ok: Message):
             ))
 
 
-@bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
+@bot.on_message(filters.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
     if not event.is_private:
         try:
