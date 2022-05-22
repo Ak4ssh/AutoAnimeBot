@@ -1,7 +1,6 @@
 import os
 import logging
 import asyncio
-from pyrogram import events
 from decouple import config
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
