@@ -68,7 +68,7 @@ async def _start(_, ok: Message):
 
 @bot.on_message(UpdateNewMessage(filters.incoming))
 async def _(event): 
-    if not event.is_private, message.chat.id == Var.TO_CHANNEL:
+    if message.chat.id == var.channel:
         try:
             if event.poll:
                 return
