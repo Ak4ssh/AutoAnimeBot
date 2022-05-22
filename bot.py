@@ -44,7 +44,7 @@ piclist = [
     
 Array = choice(piclist)
 
-@anibot.on(filters.private & filters.incoming & filters.command(['start'], prefixes=/))
+@anibot.on_message(filters.private & filters.incoming & filters.command(['start'], prefixes=/))
 async def _start(_, ok: Message):
         animu = f"**Hi {ok.user.first_name}!\n\nI Am An Auto Anime Bot Uploads Latest Anime That Are Being Alerted On __animepahe.com__\n\nCurrently Uploading & Alerting About New Animes On @{TO_CHANNEL}\n\nMade With ❤**"
         await ok.reply_photo(
