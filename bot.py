@@ -24,15 +24,15 @@ class Var(object):
 
 anibot = Client(
     'AutoAnime',
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
+    api_id=Var.APP_ID,
+    api_hash=Var.API_HASH,
+    bot_token=Var.BOT_TOKEN,
 )
 
 anibot.start()
 
 if Var.STRING:
-    bot = Client('bot', api_id=API_ID, api_hash=API_HASH, session_string=Var.STRING)
+    bot = Client('bot', api_id=Var.APP_ID, api_hash=Var.API_HASH, session_string=Var.STRING)
 else:
     bot = None
 
