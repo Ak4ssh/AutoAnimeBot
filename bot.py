@@ -4,7 +4,7 @@ import asyncio
 from decouple import config
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from random import choice 
-from pyrogram import Client, filters, message 
+from pyrogram import Client, filters
 from pyrogram.raw.types import UpdateNewMessage
 from pyrogram.types import Message 
 
