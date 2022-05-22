@@ -4,8 +4,7 @@ import asyncio
 from decouple import config
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from random import choice 
-from pyrogram import Client, filters
-
+from pyrogram import Client, filters, UpdateNewMessage 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
 # start the bot
