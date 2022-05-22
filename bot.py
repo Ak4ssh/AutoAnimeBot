@@ -67,7 +67,7 @@ async def _start(_, ok: Message):
             ))
 
 
-@bot.on_message(Message.UpdateNewMessage(incoming=True, chats=Var.FROM_CHANNEL))
+@bot.on_message(UpdateNewMessage(filters.incoming, chats=Var.FROM_CHANNEL))
 async def _(event): 
     if not event.is_private:
         try:
