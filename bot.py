@@ -41,6 +41,7 @@ piclist = [
     "https://te.legra.ph/file/b253b1e6b4e2e9fecce50.jpg",
     "https://te.legra.ph/file/30dddb618bb44a322e559.jpg",
     "https://te.legra.ph/file/41fff04624f04e5599a3a.jpg",
+]
     
 Array = choice(piclist)
 
