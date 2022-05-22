@@ -6,6 +6,7 @@ from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from random import choice 
 from pyrogram import Client, filters, message 
 from pyrogram.raw.types import UpdateNewMessage
+from pyrogram.types import Message 
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.INFO)
 
@@ -66,7 +67,7 @@ async def _start(_, ok: Message):
             ))
 
 
-@bot.on_message(message.UpdateNewMessage(incoming=True, chats=Var.FROM_CHANNEL))
+@bot.on_message(Message.UpdateNewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
     if not event.is_private:
         try:
