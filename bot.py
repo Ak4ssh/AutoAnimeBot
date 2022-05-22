@@ -2,7 +2,6 @@ import os
 import logging
 import asyncio
 from decouple import config
-from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from random import choice 
 from pyrogram import Client, filters
@@ -23,7 +22,12 @@ class Var(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
 
-anibot = Client('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
+anibot = Client(
+    'AutoAnime',
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN,
+)
 
 anibot.start()
 
