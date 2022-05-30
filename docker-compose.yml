@@ -1,0 +1,12 @@
+version: "1.7"
+services:
+  worker:
+    build: .
+    environment:
+      APP_ID: $APP_ID
+      API_HASH: $API_HASH
+      BOT_TOKEN: $BOT_TOKEN
+      STRING: $STRING
+      TO_CHANNEL: $TO_CHANNEL
+      FROM_CHANNEL: $FROM_CHANNEL
+      FEED_URL: $FEED_URL
