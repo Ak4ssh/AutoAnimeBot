@@ -63,15 +63,44 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False, buttons=btn)
+                await bot.send_file(Var.TO_CHANNEL, 
+                                    photo, 
+                                    caption = event.text, 
+                                    link_preview = False, 
+                                    buttons=[
+           [
+           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
+           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           ],
+           ],
+           )
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                        await bot.send_message(Var.TO_CHANNEL, 
+                                               event.text,
+                                               link_preview = False, 
+                                               buttons=[
+           [
+           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
+           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           ],
+           ],
+           )
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False, buttons=btn)
+                    await bot.send_file(Var.TO_CHANNEL, 
+                                        media, 
+                                        caption = event.text, 
+                                        link_preview = False, 
+                                        buttons=[
+           [
+           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
+           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           ],
+           ],
+           )
                     return
             else:
                 await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
