@@ -1,7 +1,7 @@
 version: "1.7"
 services:
   worker:
-    build:
+    build: .
     environment:
       APP_ID: $APP_ID
       API_HASH: $API_HASH
