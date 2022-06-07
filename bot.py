@@ -49,7 +49,7 @@ btn = [
 async def _(event):
    if event.is_private:
       ok = await anibot(GetFullUserRequest(event.sender_id))
-      await anibot.send_message(event.chat_id, f"Hey {ok.user.first_name}!\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @{TO_CHANNEL}\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
+      await anibot.send_message(event.chat_id, f"Hey {ok.user.first_name}!\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @AutoAnimeUploads\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
 
 @anibot.on(events.NewMessage(pattern="/bug"))
 async def _(event):
@@ -104,8 +104,8 @@ async def _(event):
                                     link_preview = False, 
                                     buttons=[
            [
-           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
-           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
+           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
            ],
            ],
            )
@@ -117,8 +117,8 @@ async def _(event):
                                                link_preview = False, 
                                                buttons=[
            [
-           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
-           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
+           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
            ],
            ],
            )
@@ -131,8 +131,8 @@ async def _(event):
                                         link_preview = False, 
                                         buttons=[
            [
-           Button.url("• ᴄʜᴀɴɴᴇʟ •", "https://t.me/ArrayCore"),
-           Button.url("• sᴜᴘᴘᴏʀᴛ •", "https://t.me/ArrayCoreChats")
+           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
+           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
            ],
            ],
            )
