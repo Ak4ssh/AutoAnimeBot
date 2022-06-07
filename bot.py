@@ -22,6 +22,7 @@ class Var(object):
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
+    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", None)
 
 anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
@@ -51,6 +52,38 @@ async def _(event):
       await anibot.send_message(event.chat_id, f"Hi {ok.user.first_name}!\n\nPlease use /help to get started.\n\nNote: I can only give you the files of anime that are currently bring airied at @AutoAnimeUploads.", buttons=btn)
 
 @bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
+async def __(event): 
+    if not event.is_private:
+        try:
+            if event.poll:
+                return
+            if event.photo:
+                photo = event.media.photo
+                await bot.send_file(Var.BACKUP_CHANNEL, 
+                                    photo, 
+                                    caption = event.text, 
+                                    link_preview = False,
+            elif event.media:
+                try:
+                    if event.media.webpage:
+                        await bot.send_message(Var.BACKUP_CHANNEL, 
+                                               event.text,
+                                               link_preview = False, 
+                        return
+                except:
+                    media = event.media.document
+                    await bot.send_file(Var.BACKUP_CHANNEL, 
+                                        media, 
+                                        caption = event.text, 
+                                        link_preview = False, 
+                    return
+            else:
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+        except:
+            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+
+
+@anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL))
 async def _(event): 
     if not event.is_private:
         try:
@@ -58,7 +91,7 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, 
+                await anibot.send_file(Var.TO_CHANNEL, 
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
@@ -72,7 +105,7 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, 
+                        await anibot.send_message(Var.TO_CHANNEL, 
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
@@ -85,7 +118,7 @@ async def _(event):
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, 
+                    await anibot.send_file(Var.TO_CHANNEL, 
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
@@ -98,7 +131,7 @@ async def _(event):
            )
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await anibot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
