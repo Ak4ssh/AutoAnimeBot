@@ -40,7 +40,8 @@ btn = [
       [ 
       Button.url("• Support •", "https://t.me/TheVenomXD"),
       Button.url("• Channel •", "https://t.me/TheVenomXD")
-      ],
+      ], 
+      ]
 
 
 @anibot.on(events.NewMessage(pattern="/start"))
