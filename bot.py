@@ -62,20 +62,20 @@ async def __(event):
                 await bot.send_file(Var.BACKUP_CHANNEL, 
                                     photo, 
                                     caption = event.text, 
-                                    link_preview = False,
+                                    link_preview = False)
             elif event.media:
                 try:
                     if event.media.webpage:
                         await bot.send_message(Var.BACKUP_CHANNEL, 
                                                event.text,
-                                               link_preview = False, 
+                                               link_preview = False)
                         return
                 except:
                     media = event.media.document
                     await bot.send_file(Var.BACKUP_CHANNEL, 
                                         media, 
                                         caption = event.text, 
-                                        link_preview = False, 
+                                        link_preview = False)
                     return
             else:
                 await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
