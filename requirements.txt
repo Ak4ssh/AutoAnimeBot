@@ -1,2 +1,2 @@
 python-decouple
-pyrogram
+telethon 
