@@ -42,8 +42,10 @@ btn = [
       Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
       Button.url("• Channel •", "https://t.me/AutoAnimeUploads")
       ], 
+      [ 
+      Button.url("ᴏᴡɴᴇʀ", "t.me/TheVenomXD") 
+      ],
       ]
-
 
 @anibot.on(events.NewMessage(pattern="/start"))
 async def _(event):
