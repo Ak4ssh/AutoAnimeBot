@@ -45,15 +45,16 @@ btn = [
       Button.url("• Support •", "t.me/TheVenomXD")
       ],
       [
-      Button.inline("• Chat Group •", "t.me/TheVenomXD")
+      Button.url("• Chat Group •", "t.me/TheVenomXD")
       ],
       ]
 
 
 @anibot.on(events.NewMessage(pattern="/start"))
 async def _(event):
-    ok = await anibot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi {ok.user.first_name}!\n\nPlease use /help to get started.\n\nNote: I can only give you the files of anime that are currently bring airied at @AutoAnimeUploads.")
+   if event.is_private:
+      ok = await anibot(GetFullUserRequest(event.sender_id))
+      await anibot.send_message(event.chat_id, f"Hi {ok.user.first_name}!\n\nPlease use /help to get started.\n\nNote: I can only give you the files of anime that are currently bring airied at @AutoAnimeUploads.", buttons=btn)
 
 @bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def _(event): 
@@ -63,7 +64,7 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, 
+                await anibot.send_file(Var.TO_CHANNEL, 
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
@@ -77,7 +78,7 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, 
+                        await anibot.send_message(Var.TO_CHANNEL, 
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
@@ -90,7 +91,7 @@ async def _(event):
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, 
+                    await anibot.send_file(Var.TO_CHANNEL, 
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
@@ -103,7 +104,7 @@ async def _(event):
            )
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await anibot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
