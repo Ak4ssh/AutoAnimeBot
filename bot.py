@@ -38,16 +38,9 @@ bot.start()
 
 btn = [
       [ 
-      Button.url("• Watch •", "https://t.me/TheVenomXD"),
-      Button.url("• Comments •", "https://t.me/DNHxHELL")
+      Button.url("• Support •", "https://t.me/TheVenomXD"),
+      Button.url("• Channel •", "https://t.me/TheVenomXD")
       ],
-      [
-      Button.url("• Support •", "t.me/TheVenomXD")
-      ],
-      [
-      Button.url("• Chat Group •", "t.me/TheVenomXD")
-      ],
-      ]
 
 
 @anibot.on(events.NewMessage(pattern="/start"))
@@ -64,7 +57,7 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await anibot.send_file(Var.TO_CHANNEL, 
+                await bot.send_file(Var.TO_CHANNEL, 
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
@@ -78,7 +71,7 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await anibot.send_message(Var.TO_CHANNEL, 
+                        await bot.send_message(Var.TO_CHANNEL, 
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
@@ -91,7 +84,7 @@ async def _(event):
                         return
                 except:
                     media = event.media.document
-                    await anibot.send_file(Var.TO_CHANNEL, 
+                    await bot.send_file(Var.TO_CHANNEL, 
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
@@ -104,7 +97,7 @@ async def _(event):
            )
                     return
             else:
-                await anibot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
