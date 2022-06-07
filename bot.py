@@ -39,8 +39,8 @@ bot.start()
 
 btn = [
       [ 
-      Button.url("• Support •", "https://t.me/TheVenomXD"),
-      Button.url("• Channel •", "https://t.me/TheVenomXD")
+      Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
+      Button.url("• Channel •", "https://t.me/AutoAnimeUploads")
       ], 
       ]
 
@@ -49,7 +49,14 @@ btn = [
 async def _(event):
    if event.is_private:
       ok = await anibot(GetFullUserRequest(event.sender_id))
-      await anibot.send_message(event.chat_id, f"Hi {ok.user.first_name}!\n\nPlease use /help to get started.\n\nNote: I can only give you the files of anime that are currently bring airied at @AutoAnimeUploads.", buttons=btn)
+      await anibot.send_message(event.chat_id, f"Hey {ok.user.first_name}!\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @{TO_CHANNEL}\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
+
+@anibot.on(events.NewMessage(pattern="/bug"))
+async def _(event):
+   if event.is_private:
+      ok = await anibot(GetFullUserRequest(event.sender_id))
+      await anibot.send_message(event.chat_id, f"Ok Your Bug Has Been Reported To The Headquarters!\n\nYou Will Receive A Message Soon\n\n Thanks For Being Here")
+
 
 @bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
 async def __(event): 
