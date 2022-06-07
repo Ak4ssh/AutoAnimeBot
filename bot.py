@@ -78,7 +78,7 @@ async def __(event):
                                         link_preview = False)
                     return
             else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await bot.send_message(Var.BACKUP_CHANNEL, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
