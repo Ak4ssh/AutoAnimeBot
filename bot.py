@@ -22,7 +22,7 @@ class Var(object):
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
-    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", cast=int)
+    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", None)
 
 anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
