@@ -16,7 +16,7 @@ print("Initializing Repo")
 
 class Var(object):
     STRING = os.environ.get("STRING", None)
-    APP_ID = int(os.environ.get("APP_ID", 6))
+    APP_ID = int(os.environ.get("APP_ID", None))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
     FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
     TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
@@ -100,7 +100,7 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await anibot.send_file(Var.TO_CHANNEL, 
+                await anibot.send_file(-1001791685690, 
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
@@ -114,7 +114,7 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await anibot.send_message(Var.TO_CHANNEL, 
+                        await anibot.send_message(-1001791685690, 
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
@@ -127,7 +127,7 @@ async def _(event):
                         return
                 except:
                     media = event.media.document
-                    await anibot.send_file(Var.TO_CHANNEL, 
+                    await anibot.send_file(-1001791685690, 
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
@@ -140,7 +140,7 @@ async def _(event):
            )
                     return
             else:
-                await anibot.send_message(Var.TO_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await anibot.send_message(-1001791685690, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
