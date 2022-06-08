@@ -16,10 +16,10 @@ print("Initializing Repo")
 
 class Var(object):
     STRING = os.environ.get("STRING", None)
-    APP_ID = int(os.environ.get("APP_ID", cast=int))
+    APP_ID = int(os.environ.get("APP_ID", None))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", cast=int)
-    TO_CHANNEL = os.environ.get("TO_CHANNEL", cast=int)
+    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
+    TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
     BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", cast=int)
