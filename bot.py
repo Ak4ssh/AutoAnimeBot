@@ -16,13 +16,13 @@ print("Initializing Repo")
 
 class Var(object):
     STRING = os.environ.get("STRING", None)
-    APP_ID = int(os.environ.get("APP_ID", 6))
+    APP_ID = int(os.environ.get("APP_ID", cast=int))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
-    TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
+    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", cast=int)
+    TO_CHANNEL = os.environ.get("TO_CHANNEL", cast=int)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
-    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", None)
+    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", cast=int)
 
 anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
