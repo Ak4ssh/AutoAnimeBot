@@ -100,7 +100,7 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await anibot.send_file(-1001791685690,-1001739244523,-1001686163647,
+                await anibot.send_file(-1001791685690,
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
@@ -114,7 +114,7 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await anibot.send_message(-1001791685690,-1001739244523,-1001686163647,
+                        await anibot.send_message(-1001791685690,
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
@@ -127,7 +127,7 @@ async def _(event):
                         return
                 except:
                     media = event.media.document
-                    await anibot.send_file(-1001791685690,-1001739244523,-1001686163647,
+                    await anibot.send_file(-1001791685690,
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
@@ -140,7 +140,7 @@ async def _(event):
            )
                     return
             else:
-                await anibot.send_message(-1001791685690,-1001739244523,-1001686163647, event.text, link_preview = False, buttons=btn)
+                await anibot.send_message(-1001791685690, event.text, link_preview = False, buttons=btn)
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
