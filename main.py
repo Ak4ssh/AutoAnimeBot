@@ -3,6 +3,7 @@ import os
 import requests
 import telethon
 import time
+from random import randint 
 import shutil
 import psutil
 import sys
@@ -12,7 +13,8 @@ API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 SUDO = list(map(int, os.getenv("SUDO").split()))
-
+rem = randint(1, 10)
+re = randint(1, 99)
 class Dict2Class(object):
     def __init__(self, my_dict):
         for key in my_dict:
@@ -159,81 +161,7 @@ async def _(e):
         await e.answer('Comming Soon', alert=True)
     else:
         async with e.client.conversation(e.chat_id) as xmr:
-            await xmr.send_message("Send Your Combo File or Text In Correct Format")
-            try:
-                File = await xmr.get_response(timeout=300)
-            except:
-                await xmr.send_message("Timeout! You Must Send The File Under 5min")
-                return
-            if File.text == "/start" or File.text == "/help":
-                return
-            if (File.media and File.media.document):
-                timenow = time.time()
-                media = await File.download_media(f'')
-                with open(f"{File.file.name}", "r") as ish:
-                    data = []
-                    data = ish.read().split("\n")
-            else:
-                if ":" in File.text:
-                    data = str(File.text).split("\n")
-                else:
-                    await xmr.send_message("You Have Sended An Invalid way of Text Combo")
-                    return
-
-            good = 0
-            custom = 0
-            bad = 0
-            cpm = 0
-            xx = await xmr.send_message(f"Cracking Start\n\nCPM: {cpm}\nGood: {good}\nCustom: {custom}\nBad: {bad}\n\nMade with ❤️ @InducedBots")
-            for t in range(len(data)):
-
-                if t % 60 == 0:
-                    await xx.edit(f"Cracking Start\n\nCPM: {cpm}\nTotal: {good+custom+bad}\nGood: {good}\nCustom: {custom}\nBad: {bad}\n\nMade with ❤️ @InducedBots")
-                    cpm = 0
-                elif t % 10 == 0:
-                    await xx.edit(f"Cracking Start\n\nCPM: {cpm}\nTotal: {good+custom+bad}\nGood: {good}\nCustom: {custom}\nBad: {bad}\n\nMade with ❤️ @InducedBots")
-                idp = data[t]
-                if e.data == b"voot":
-                    d = "voot"
-                elif e.data == b"zee5":
-                    d = "zee5"
-                elif e.data == b"alt":
-                    d = "alt"
-                elif e.data == b"hoichoi":
-                    d = "hoichoi"
-                re = requests.get(
-                    f"https://inducedapi.vercel.app/{d}?idp={idp}")
-                ishan = Dict2Class(re.json())
-                try:
-                    if ishan.error:
-                        await xmr.send_message(f'🌟 Api Is Now Dead Contact Support Group\n@InducedBotsSupport\n\nMade with ❤️ @InducedBots')
-                        return
-                    else:
-                        if ishan.stats == 'Sucessfull':
-                            if ishan.validity == "Expired":
-                                custom += 1
-                                await xmr.send_message(f'🌟 Hit Expired 💫\nStats: Expired\nSite: {d}\nCombo: {idp}\n\nMade with ❤️ @InducedBots')
-                            else:
-                                good += 1
-                                await xmr.send_message(f'🌟 Hit Combo 💫\nStats: Valid\nSite: {d}\nCombo: {idp}\nPlan: {ishan.plan}\nDays Left: {ishan.validity}\nRecurring: {ishan.autorenewal}\n\nMade with ❤️ @InducedBots')
-                        elif ishan.stats == "Unsucessfull":
-                            bad += 1
-                        cpm += 1
-                except:
-                        if ishan.stats == 'Sucessfull':
-                            if ishan.validity == "Expired":
-                                custom += 1
-                                await xmr.send_message(f'🌟 Hit Expired 💫\nStats: Expired\nSite: {d}\nCombo: {idp}\n\nMade with ❤️ @InducedBots')
-                            else:
-                                good += 1
-                                await xmr.send_message(f'🌟 Hit Combo 💫\nStats: Valid\nSite: {d}\nCombo: {idp}\nPlan: {ishan.plan}\nDays Left: {ishan.validity}\nRecurring: {ishan.autorenewal}\n\nMade with ❤️ @InducedBots')
-                        elif ishan.stats == "Unsucessfull":
-                            bad += 1
-                        cpm += 1
-
-            await xx.edit(f"Cracking Start\n\nCPM: {cpm}\nTotal: {good+custom+bad}\nGood: {good}\nCustom: {custom}\nBad: {bad}\n\nMade with ❤️ @InducedBots")
-            await xmr.send_message("All Done")
-
+            await xmr.send_message(f"Signal Is: `{rem}.{re}`")
 
 @client.on(telethon.events.InlineQuery)
 async def inline_alive(o):
