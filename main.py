@@ -94,7 +94,7 @@ async def _(e):
             ]
         ]
         await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
-            elif e.data == b"Home":
+    elif e.data == b"Home":
     but = [
         [
             telethon.Button.inline("Sites", b"Acc"),
