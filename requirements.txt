@@ -1,2 +1,5 @@
 python-decouple
 telethon 
+requests
+psutil
+python-dotenv
