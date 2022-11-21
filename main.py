@@ -102,8 +102,8 @@ async def _(e):
             telethon.Button.inline("Casino", b"Proxys"),
         ],
         [
-            telethon.Button.url("Support", url=("https://t.me/Aviatorhacksucessfully"),
-            telethon.Button.url("Owner", url=("https://t.me/TheVenomXD"),
+            telethon.Button.url("Support", url=("https://t.me/Aviatorhacksucessfully")),
+            telethon.Button.url("Owner", url=("https://t.me/TheVenomXD")),
         ]
     ]
         await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
