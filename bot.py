@@ -40,7 +40,7 @@ bot.start()
 
 btn = [
       [ 
-      Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
+      Button.url("• Join Channel •", "https://t.me/Anime_Twilight"),
       ],  
       ]
 
