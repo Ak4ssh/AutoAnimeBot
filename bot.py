@@ -11,18 +11,19 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 # start the bot
 print("Starting...")
-print("Initializing RyzenApi")
-print("Initializing Repo")
 
 class Var(object):
     STRING = os.environ.get("STRING", None)
     APP_ID = int(os.environ.get("APP_ID", 6))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
-    TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
+    FROM_CHANNEL1 = os.environ.get("FROM_CHANNEL1", None)
+    TO_CHANNEL1 = os.environ.get("TO_CHANNEL1", None)
+    FROM_CHANNEL2 = os.environ.get("FROM_CHANNEL2", None)
+    TO_CHANNEL2 = os.environ.get("TO_CHANNEL2", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     FEED_URL= os.environ.get("FEED_URL", None)
-    BACKUP_CHANNEL = os.environ.get("BACKUP_CHANNEL", None)
+    BACKUP_CHANNEL1 = os.environ.get("BACKUP_CHANNEL1", None)
+    BACKUP_CHANNEL2 = os.environ.get("BACKUP_CHANNEL2", None)
 
 anibot = TelegramClient('anibot', Var.APP_ID, Var.API_HASH).start(bot_token=Var.BOT_TOKEN)
 
@@ -39,12 +40,8 @@ bot.start()
 
 btn = [
       [ 
-      Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
-      Button.url("• Channel •", "https://t.me/AutoAnimeUploads")
-      ], 
-      [ 
-      Button.url("ᴏᴡɴᴇʀ", "t.me/TheVenomXD") 
-      ],
+      Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
+      ],  
       ]
 
 @anibot.on(events.NewMessage(pattern="/start"))
@@ -53,14 +50,9 @@ async def _(event):
       ok = await anibot(GetFullUserRequest(event.sender_id))
       await anibot.send_message(event.chat_id, f"Hey {ok.user.first_name}!\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @AutoAnimeUploads\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
 
-@anibot.on(events.NewMessage(pattern="/bug"))
-async def _(event):
-   if event.is_private:
-      ok = await anibot(GetFullUserRequest(event.sender_id))
-      await anibot.send_message(event.chat_id, f"Ok Your Bug Has Been Reported To The Headquarters!\n\nYou Will Receive A Message Soon\n\n Thanks For Being Here")
+#-----------------------------------------------------------------------------------------------------------------------------------
 
-
-@bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL))
+@bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL1))
 async def __(event): 
     if not event.is_private:
         try:
@@ -68,31 +60,30 @@ async def __(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await bot.send_file(Var.BACKUP_CHANNEL, 
+                await bot.send_file(Var.BACKUP_CHANNEL1, 
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False)
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await bot.send_message(Var.BACKUP_CHANNEL, 
+                        await bot.send_message(Var.BACKUP_CHANNEL1, 
                                                event.text,
                                                link_preview = False)
                         return
                 except:
                     media = event.media.document
-                    await bot.send_file(Var.BACKUP_CHANNEL, 
+                    await bot.send_file(Var.BACKUP_CHANNEL1, 
                                         media, 
                                         caption = event.text, 
                                         link_preview = False)
                     return
             else:
-                await bot.send_message(Var.BACKUP_CHANNEL, event.text, link_preview = False, buttons=btn)
+                await bot.send_message(Var.BACKUP_CHANNEL1, event.text, link_preview = False, buttons=btn)
         except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+            print("TO_CHANNEL1 ID is wrong or I can't send messages there (make me admin).")
 
-
-@anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL))
+@anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL1))
 async def _(event): 
     if not event.is_private:
         try:
@@ -100,55 +91,142 @@ async def _(event):
                 return
             if event.photo:
                 photo = event.media.photo
-                await anibot.send_file(-1001791685690,
+                await anibot.send_file(-1001621885036,
                                     photo, 
                                     caption = event.text, 
                                     link_preview = False, 
                                     buttons=[
            [
-           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
-           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
+           Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
+           ],
+           [           
+           Button.url("• Watch Now •", "rizoel"),
            ],
            ],
            )
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await anibot.send_message(-1001791685690,
+                        await anibot.send_message(-1001621885036,
                                                event.text,
                                                link_preview = False, 
                                                buttons=[
            [
-           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
-           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
+           Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
+           ],
+           [           
+           Button.url("• Watch Now •", "rizoel"),
            ],
            ],
            )
                         return
                 except:
                     media = event.media.document
-                    await anibot.send_file(-1001791685690,
+                    await anibot.send_file(-1001621885036,
                                         media, 
                                         caption = event.text, 
                                         link_preview = False, 
                                         buttons=[
            [
-           Button.url("• Chat •", "https://t.me/AutoAnimeChats"),
-           Button.url("• Support •", "https://t.me/AutoAnimeUploads")
+           Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
+           ],
+           [           
+           Button.url("• Watch Now •", "rizoel"),
            ],
            ],
            )
                     return
             else:
-                await anibot.send_message(-1001791685690, event.text, link_preview = False, buttons=btn)
+                await anibot.send_message(-1001621885036, event.text, link_preview = False)
         except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+            print("TO_CHANNEL1 ID is wrong or I can't send messages there (make me admin).")
 
+#------------------------------------------------------------------------------------------------------------------------
+
+@bot.on(events.NewMessage(incoming=True, chats=Var.FROM_CHANNEL2))
+async def __(event): 
+    if not event.is_private:
+        try:
+            if event.poll:
+                return
+            if event.photo:
+                photo = event.media.photo
+                await bot.send_file(Var.BACKUP_CHANNEL2, 
+                                    photo, 
+                                    caption = event.text, 
+                                    link_preview = False)
+            elif event.media:
+                try:
+                    if event.media.webpage:
+                        await bot.send_message(Var.BACKUP_CHANNEL2, 
+                                               event.text,
+                                               link_preview = False)
+                        return
+                except:
+                    media = event.media.document
+                    await bot.send_file(Var.BACKUP_CHANNEL2, 
+                                        media, 
+                                        caption = event.text, 
+                                        link_preview = False)
+                    return
+            else:
+                await bot.send_message(Var.BACKUP_CHANNEL2, event.text, link_preview = False)
+        except:
+            print("TO_CHANNEL2 ID is wrong or I can't send messages there (make me admin).")
+
+@anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL2))
+async def _(event): 
+    if not event.is_private:
+        try:
+            if event.poll:
+                return
+            if event.photo:
+                photo = event.media.photo
+                await anibot.send_file(-1001788159115,
+                                    photo, 
+                                    caption = event.text, 
+                                    link_preview = False, 
+                                    buttons=[
+           [
+           Button.url("• Main Channel •", "https://t.me/Anime_Twilight"),
+           ],
+           ],
+           )
+            elif event.media:
+                try:
+                    if event.media.webpage:
+                        await anibot.send_message(-1001788159115,
+                                               event.text,
+                                               link_preview = False, 
+                                               buttons=[
+           [
+           Button.url("• Main Channel •", "https://t.me/Anime_Twilight"),
+           ],
+           ],
+           )
+                        return
+                except:
+                    media = event.media.document
+                    await anibot.send_file(-1001788159115,
+                                        media, 
+                                        caption = event.text, 
+                                        link_preview = False, 
+                                        buttons=[
+           [
+           Button.url("• Main Channel •", "https://t.me/Anime_Twilight"),
+           ],
+           ],
+           )
+                    return
+            else:
+                await anibot.send_message(-1001788159115, event.text, link_preview = False)
+        except:
+            print("TO_CHANNEL2 ID is wrong or I can't send messages there (make me admin).")
 
 def send_msg(title,msg):
     print("Detected a new release!")
     headers={'Connection':'close'}
-    requests.Session().post(f'https://api.telegram.org/bot'+Var.BOT_TOKEN+'/sendMessage?chat_id='+Var.TO_CHANNEL+'&text='+title+'%0A'+msg, headers=headers)
+    requests.Session().post(f'https://api.telegram.org/bot'+Var.BOT_TOKEN+'/sendMessage?chat_id='+Var.TO_CHANNEL1+'&text='+title+'%0A'+msg, headers=headers)
     
 def main():
     prev=None #a shit scheme to save previous title to stop repitition
