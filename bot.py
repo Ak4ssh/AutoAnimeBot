@@ -48,7 +48,7 @@ btn = [
 async def _(event):
    if event.is_private:
       ok = await anibot(GetFullUserRequest(event.sender_id))
-      await anibot.send_message(event.chat_id, f"Hey {ok.user.first_name}!\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @AutoAnimeUploads\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
+      await anibot.send_message(event.chat_id, f"Hey !\n\nI Am An Auto Airing Bot Currently Uploading New Launched Animes At  @AutoAnimeUploads\n\n Join @AutoAnimeChats For Reporting Bugs & Fun. If Limited You Can Use `/bug` <your message> In Bot Pm To Report The Bugs\n\n Thanks For Being With Us And Hope We Will Be Connected In Future Too!", buttons=btn)
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 
