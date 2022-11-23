@@ -86,7 +86,8 @@ async def __(event):
 
 @anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL1))
 async def _(event):
-    rizoel = Var.TO_CHANNEL2.split("-100")[1]
+    x = Var.TO_CHANNEL2
+    rizoel = x.split("-100")[1]
     if not event.is_private:
         try:
             if event.poll:
