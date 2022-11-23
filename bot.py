@@ -187,9 +187,7 @@ async def _(event):
             if event.photo:
                 photo = event.media.photo
                 await anibot.send_file(-1001788159115,
-                                    photo, 
-                                    caption = event.text, 
-                                    link_preview = False, 
+                                    photo,
                                     buttons=[
            [
            Button.url("• Main Channel •", "https://t.me/Anime_Twilight"),
@@ -200,7 +198,6 @@ async def _(event):
                 try:
                     if event.media.webpage:
                         await anibot.send_message(-1001788159115,
-                                               event.text,
                                                link_preview = False, 
                                                buttons=[
            [
@@ -212,9 +209,7 @@ async def _(event):
                 except:
                     media = event.media.document
                     await anibot.send_file(-1001788159115,
-                                        media, 
-                                        caption = event.text, 
-                                        link_preview = False, 
+                                        media,
                                         buttons=[
            [
            Button.url("• Main Channel •", "https://t.me/Anime_Twilight"),
