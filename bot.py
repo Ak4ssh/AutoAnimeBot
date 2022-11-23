@@ -83,8 +83,10 @@ async def __(event):
         except:
             print("TO_CHANNEL1 ID is wrong or I can't send messages there (make me admin).")
 
+
 @anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL1))
-async def _(event): 
+async def _(event):
+    rizoel = Var.TO_CHANNEL2.split("-100")[1]
     if not event.is_private:
         try:
             if event.poll:
@@ -100,7 +102,7 @@ async def _(event):
            Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
            ],
            [           
-           Button.url("• Watch Now •", "rizoel"),
+           Button.url("• Watch Now •", f"https://t.me/c/{rizoel}/{event.id}")
            ],
            ],
            )
@@ -115,7 +117,7 @@ async def _(event):
            Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
            ],
            [           
-           Button.url("• Watch Now •", "rizoel"),
+           Button.url("• Watch Now •", f"https://t.me/c/{rizoel}/{event.id}"),
            ],
            ],
            )
@@ -131,7 +133,7 @@ async def _(event):
            Button.url("• Join Channel •", "https://t.me/+dGRAT2j_OUJkNWNl"),
            ],
            [           
-           Button.url("• Watch Now •", "rizoel"),
+           Button.url("• Watch Now •", f"https://t.me/c/{rizoel}/{event.id}"),
            ],
            ],
            )
@@ -173,6 +175,7 @@ async def __(event):
                 await bot.send_message(Var.BACKUP_CHANNEL2, event.text, link_preview = False)
         except:
             print("TO_CHANNEL2 ID is wrong or I can't send messages there (make me admin).")
+
 
 @anibot.on(events.NewMessage(incoming=True, chats=Var.BACKUP_CHANNEL2))
 async def _(event): 
