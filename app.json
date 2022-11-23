@@ -28,11 +28,27 @@
             "API_HASH": "Your api hash from my.telegram.org",
             "value": ""
         },
-        "FROM_CHANNEL": {
+        "FROM_CHANNEL1": {
             "description": "The ID of the main channel from where posts have to be copied.",
             "value": ""
         },
-        "TO_CHANNEL": {
+        "TO_CHANNEL1": {
+            "description": "The ID of the channel to which the posts are to be sent.",
+            "value": ""
+        },
+        "FROM_CHANNEL2": {
+            "description": "The ID of the main channel from where posts have to be copied.",
+            "value": ""
+        },
+        "TO_CHANNEL2": {
+            "description": "The ID of the channel to which the posts are to be sent.",
+            "value": ""
+        },
+        "BACKUP_CHANNEL1": {
+            "description": "The ID of the main channel from where posts have to be copied.",
+            "value": ""
+        },
+        "BACKUP_CHANNEL2": {
             "description": "The ID of the channel to which the posts are to be sent.",
             "value": ""
         }
