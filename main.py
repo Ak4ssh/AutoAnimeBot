@@ -40,7 +40,6 @@ text = """---------------------------------
     ╚════╝ 
 ---------------------------------
 """
-start_time = time.time()
 client = telethon.TelegramClient(None, api_id=API_ID, api_hash=API_HASH).start(bot_token=BOT_TOKEN)
 
 async def main():
@@ -133,17 +132,6 @@ async def _(e):
             return f"{size:.2f} {unit}"
 
         def time_formatter():
-            minutes, seconds = divmod(int(time.time() - start_time), 60)
-            hours, minutes = divmod(minutes, 60)
-            days, hours = divmod(hours, 24)
-            weeks, days = divmod(days, 7)
-            tmp = (
-                ((str(weeks) + "w:") if weeks else "")
-                + ((str(days) + "d:") if days else "")
-                + ((str(hours) + "h:") if hours else "")
-                + ((str(minutes) + "m:") if minutes else "")
-                + ((str(seconds) + "s") if seconds else "")
-            )
             if tmp != "":
                 if tmp.endswith(":"):
                     return tmp[:-1]
