@@ -167,8 +167,8 @@ rizoel = f"✯ Predictor Aviator Bot ☆\n\n"
 rizoel += f"═══════════════════\n"
 rizoel += f"• 1 Month = ₹1500\n"
 rizoel += f"• 2 Months + Private Server = ₹2300\n"
-rizoel += f"• 5 Months Accurate Signals = ₹3700\n"
-rizoel += f"• Pay Using Above Bar code And send transaction Id Or Screenshot For Funds Will Be added In 5 seconds\n"
+rizoel += f"• 5 Months Accurate Signals = ₹3700\n\n"
+rizoel += f"**• Pay Using Above Bar code And send transaction Id Or Screenshot For Funds Will Be added In 5 seconds**\n\n"
 rizoel += f"═══════════════════\n\n"   
 
                                   
