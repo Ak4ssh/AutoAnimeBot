@@ -9,8 +9,6 @@ import psutil
 import os
 import asyncio
 import sys
-import git
-import heroku3
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events, version, Button
 from telethon.tl.custom import button
