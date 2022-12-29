@@ -194,7 +194,7 @@ async def alive(event):
                                   caption=rizoel,
                                   buttons=[
         [
-        Button.url("ᴄʜᴀɴɴᴇʟ", "https://t.me/Aviatorhacksucessfully),
+        Button.url("ᴄʜᴀɴɴᴇʟ", "https://t.me/Aviatorhacksucessfully"),
         Button.url("sᴜᴘᴘᴏʀᴛ", "https://t.me/TheVenomXD")
         ]
         ]
