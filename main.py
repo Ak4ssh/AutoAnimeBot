@@ -174,8 +174,7 @@ rizoel += f"═══════════════════\n\n"
                                   
 @client.on(telethon.events.NewMessage(incoming=True, pattern='/buy', func=lambda e: e.is_private))
 async def alive(event):
-  if event.sender_id in SUDO_USERS:
-     await event.client.send_file(event.chat_id,
+    await event.client.send_file(event.chat_id,
                                   RIZ_PIC,
                                   caption=rizoel,
                                   buttons=[
