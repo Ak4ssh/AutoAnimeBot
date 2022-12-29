@@ -65,7 +65,7 @@ async def _(e):
             telethon.Button.url("Owner", url=("https://t.me/TheVenomXD")),
         ]
     ]
-    await e.reply(f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
+    await e.reply(f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**\n\n**You can add your funds manually by command /buy no third party.", buttons=but)
 
 @client.on(telethon.events.CallbackQuery)
 async def _(e):
@@ -82,7 +82,7 @@ async def _(e):
                 telethon.Button.inline("Back", b"Home")
             ]
         ]
-        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
+        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**\n\n**You can add your funds manually by command /buy no third party.", buttons=but)
     elif e.data == b"Acc":
         if e.query.user_id not in SUDO:
             await e.client.send_message(e.chat.id, "You have no access to bot\n\n Get It From @TheVenomXD")
@@ -102,7 +102,7 @@ async def _(e):
                 telethon.Button.inline("Back", b"Home")
             ]
         ]
-        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
+        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**\n\n**You can add your funds manually by command /buy no third party.", buttons=but)
     elif e.data == b"Home":
         but = [
         [
@@ -115,7 +115,7 @@ async def _(e):
             telethon.Button.url("Owner", url=("https://t.me/TheVenomXD")),
         ]
     ]
-        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**", buttons=but)
+        await e.client.edit_message(e.chat.id, e.query.msg_id, f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**\n\n**You can add your funds manually by command /buy no third party.", buttons=but)
     elif e.data == b"Stat":
         start = time.time()
         await e.answer('\nWait Checking Stats', alert=True)
