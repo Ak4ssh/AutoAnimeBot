@@ -6,6 +6,16 @@ import time
 from random import randint 
 import shutil
 import psutil
+import os
+import asyncio
+import sys
+import git
+import heroku3
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon import events, version, Button
+from telethon.tl.custom import button
+from time import time
+from datetime import datetime
 import sys
 import dotenv
 dotenv.load_dotenv()
@@ -162,6 +172,33 @@ async def _(e):
     else:
         async with e.client.conversation(e.chat_id) as xmr:
             await xmr.send_message(f"Signal Is: `{rem}.{re}`")
+
+
+
+RIZ_PIC = "https://telegra.ph/file/de8d7a90381cdf14db81b.jpg"
+
+rizoel = f"✯ Predictor Aviator Bot ☆\n\n"
+rizoel += f"═══════════════════\n"
+rizoel += f"• 1 Month = ₹1500\n"
+rizoel += f"• 2 Months + Private Server = ₹2300\n"
+rizoel += f"• 5 Months Accurate Signals = ₹3700\n"
+rizoel += f"• Pay Using Above Bar code And send transaction Id Or Screenshot For Funds Will Be added In 5 seconds\n"
+rizoel += f"═══════════════════\n\n"   
+
+                                  
+@client.on(telethon.events.NewMessage(incoming=True, pattern='/buy', func=lambda e: e.is_private))
+async def alive(event):
+  if event.sender_id in SUDO_USERS:
+     await event.client.send_file(event.chat_id,
+                                  RIZ_PIC,
+                                  caption=rizoel,
+                                  buttons=[
+        [
+        Button.url("ᴄʜᴀɴɴᴇʟ", "https://t.me/Aviatorhacksucessfully),
+        Button.url("sᴜᴘᴘᴏʀᴛ", "https://t.me/TheVenomXD")
+        ]
+        ]
+        )
 
 @client.on(telethon.events.InlineQuery)
 async def inline_alive(o):
