@@ -161,7 +161,7 @@ async def _(e):
 
 
 
-RIZ_PIC = "https://telegra.ph/file/de8d7a90381cdf14db81b.jpg"
+RIZ_PIC = "https://telegra.ph/file/6166c9ac5b281a3039afa.jpg"
 
 rizoel = f"✯ Predictor Aviator Bot ☆\n\n"
 rizoel += f"═══════════════════\n"
