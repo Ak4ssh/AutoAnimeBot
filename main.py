@@ -14,6 +14,7 @@ from telethon import events, version, Button
 from telethon.tl.custom import button
 from time import time
 from datetime import datetime
+from random import choice
 import sys
 import dotenv
 dotenv.load_dotenv()
@@ -56,6 +57,22 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(main())  
 
 @c.on(telethon.events.NewMessage(incoming=True, pattern='/start', func=lambda e: e.is_private))
+async def _(e):
+
+    but = [
+        [
+            telethon.Button.inline("Sites", b"Acc"),
+            telethon.Button.inline("Jet", b"Proxys"),
+            telethon.Button.inline("Casino", b"Proxys"),
+        ],
+        [
+            telethon.Button.url("Support", url=("https://t.me/Aviatorhacksucessfully")),
+            telethon.Button.url("Owner", url=("https://t.me/EryX_xD")),
+        ]
+    ]
+    await e.reply(f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @EryX_xD**\n\n**You can add your funds manually by command /buy no third party.**", buttons=but)
+
+
 @client.on(telethon.events.NewMessage(incoming=True, pattern='/start', func=lambda e: e.is_private))
 async def _(e):
 
@@ -193,7 +210,7 @@ async def alive(event):
                                   buttons=[
         [
         Button.url("Pay Me", "https://go.onelink.me/xCTH?pid=af_app_invites&af_referrer_customer_id=1512090093&af_dp=paytmmp%3A%2F%252Fcash_wallet%253Ffeaturetype%253Dsendmoneymobile%2524recipient%253D7566780378%2524amount%253D%2524comment%253D&af_scheme=paytmmp%3A%2F%2Fcash_wallet&af_referrer_uid=1672658580296-8652739948505464471&af_channel=social&af_scheme_parameter=%7B%22featuretype%22%3A%22sendmoneymobile%22%2C%22recipient%22%3A%227566780378%22%2C%22amount%22%3A%22%22%2C%22comment%22%3A%22%22%7D&af_siteid=net.one97.paytm&is_retargeting=true"),
-        Button.url("Help", "https://t.me/ITZ_HYPER_XD")
+        Button.url("Help", "t.me/EryX_xD")
         ]
         ]
         )
