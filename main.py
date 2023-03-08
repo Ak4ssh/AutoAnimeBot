@@ -66,7 +66,7 @@ async def _(e):
             telethon.Button.inline("Casino", b"Proxys"),
         ],
         [
-            telethon.Button.url("Support", url=("https://t.me/Aviatorhacksucessfully")),
+            telethon.Button.url("Support", url=("https://t.me/PredictorAviator_Hack")),
             telethon.Button.url("Owner", url=("https://t.me/EryX_xD")),
         ]
     ]
