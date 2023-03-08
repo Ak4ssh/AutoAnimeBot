@@ -24,10 +24,8 @@ API_HASH = os.getenv("API_HASH")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 BOT_TN = os.getenv("BOT_TN")
 SUDO = list(map(int, os.getenv("SUDO").split()))
-rem = randint(1, 10)
-r = random.choice(rem)
-re = randint(1, 99)
-rr = random.choice(re)
+rem = random.randint(1, 10)
+re = random.randint(1, 99)
 class Dict2Class(object):
     def __init__(self, my_dict):
         for key in my_dict:
@@ -183,7 +181,7 @@ async def _(e):
         await e.answer('Comming Soon', alert=True)
     else:
         async with e.client.conversation(e.chat_id) as xmr:
-            await xmr.send_message(f"Signal Is: `{r}.{rr}`")
+            await xmr.send_message(f"Signal Is: `{rem}.{re}`")
 
 
 Katua = "https://telegra.ph/file/a7cd9fa2cab24ed0006e0.jpg"
