@@ -49,6 +49,7 @@ async def main():
     for x in SUDO:
         try:
             await client.send_message(x,"Bot Has been restarted")
+            await c.send_message(x,"Bot Has been restarted")
         except:pass
 
 loop = asyncio.get_event_loop()
@@ -165,8 +166,16 @@ async def _(e):
             await xmr.send_message(f"Signal Is: `{rem}.{re}`")
 
 
-
+Katua = "https://telegra.ph/file/a7cd9fa2cab24ed0006e0.jpg"
 RIZ_PIC = "https://telegra.ph/file/6166c9ac5b281a3039afa.jpg"
+
+Katuaa = f"✯ Predictor Aviator Bot ☆\n\n"
+Katuaa += f"═══════════════════\n"
+Katuaa += f"• 1 Month = ₹1500\n"
+Katuaa += f"• 2 Months + Private Server = ₹2300\n"
+Katuaa += f"• 5 Months Accurate Signals = ₹3700\n\n"
+Katuaa += f"**• Pay Using Above Bar code And send transaction Id Or Screenshot For Funds Will Be added In 5 seconds**\n\n"
+Katuaa += f"═══════════════════\n\n"   
 
 rizoel = f"✯ Predictor Aviator Bot ☆\n\n"
 rizoel += f"═══════════════════\n"
@@ -179,12 +188,12 @@ rizoel += f"═══════════════════\n\n"
 @c.on(telethon.events.NewMessage(incoming=True, pattern='/buy', func=lambda e: e.is_private))
 async def alive(event):
     await event.client.send_file(event.chat_id,
-                                  RIZ_PIC,
-                                  caption=rizoel,
+                                  Katua,
+                                  caption=Katuaa,
                                   buttons=[
         [
         Button.url("Pay Me", "https://go.onelink.me/xCTH?pid=af_app_invites&af_referrer_customer_id=1512090093&af_dp=paytmmp%3A%2F%252Fcash_wallet%253Ffeaturetype%253Dsendmoneymobile%2524recipient%253D7566780378%2524amount%253D%2524comment%253D&af_scheme=paytmmp%3A%2F%2Fcash_wallet&af_referrer_uid=1672658580296-8652739948505464471&af_channel=social&af_scheme_parameter=%7B%22featuretype%22%3A%22sendmoneymobile%22%2C%22recipient%22%3A%227566780378%22%2C%22amount%22%3A%22%22%2C%22comment%22%3A%22%22%7D&af_siteid=net.one97.paytm&is_retargeting=true"),
-        Button.url("sᴜᴘᴘᴏʀᴛ", "https://t.me/TheVenomXD")
+        Button.url("Help", "https://t.me/ITZ_HYPER_XD")
         ]
         ]
         )
@@ -246,5 +255,6 @@ async def inline_alive(o):
 print(text)
 try:
     client.run_until_disconnected()
+    c.run_until_disconnected()
 except:
     os.execl(sys.executable, sys.executable, "-m", "main")
