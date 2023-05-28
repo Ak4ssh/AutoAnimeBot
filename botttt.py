@@ -15,102 +15,86 @@ print("Initializing RyzenApi")
 print("Initializing Repo")
 
 class Var(object):
-    STRING = os.environ.get("STRING", None)
     APP_ID = int(os.environ.get("APP_ID", 6))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    FROM_CHANNEL = os.environ.get("FROM_CHANNEL", None)
-    TO_CHANNEL = os.environ.get("TO_CHANNEL", None)
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
-    FEED_URL= os.environ.get("FEED_URL", None)
-
-anibot = Client(
+    
+app = Client(
     'AutoAnime',
     api_id=Var.APP_ID,
     api_hash=Var.API_HASH,
     bot_token=Var.BOT_TOKEN,
 )
 
-anibot.start()
 
-if Var.STRING:
-    bot = Client('bot', api_id=Var.APP_ID, api_hash=Var.API_HASH, session_string=Var.STRING)
-else:
-    bot = None
+def send_claim_photo(chat_id):
+    photo = "https://graph.org/file/af9d5202cc3d21b3254a5.jpg"  # Path to the photo you want to send
 
-bot.start()
+    # Create inline keyboard with the "Claim" button
+    keyboard = [
+        [InlineKeyboardButton("Claim", callback_data="claim")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
-piclist = [
-    "https://te.legra.ph/file/bbf0b40a031dc3987ca36.jpg",
-    "https://te.legra.ph/file/d8f4efcbfd88612ebdc70.jpg",
-    "https://te.legra.ph/file/b253b1e6b4e2e9fecce50.jpg",
-    "https://te.legra.ph/file/30dddb618bb44a322e559.jpg",
-    "https://te.legra.ph/file/41fff04624f04e5599a3a.jpg",
-]
-    
-Array = choice(piclist)
-bisi = "/"
-
-@anibot.on_message(filters.private & filters.incoming & filters.command(['/start']))
-async def _start(_, ok: Message):
-        animu = f"**Hi {ok.user.first_name}!\n\nI Am An Auto Anime Bot Uploads Latest Anime That Are Being Alerted On __animepahe.com__\n\nCurrently Uploading & Alerting About New Animes On @{TO_CHANNEL}\n\nMade With ❤**"
-        await ok.reply_photo(
-        photo=Array,
-        caption=animu,
-        reply_markup=InlineKeyboardMarkup(
-                [[
-                    InlineKeyboardButton(
-                        "• Channel •", url="https://t.me/ArrayCore"),
-                    InlineKeyboardButton(
-                        "• Support •", url="https://t.me/KyuKaizenX")
-                ],]
-            ))
+    # Send the photo with the inline button
+    app.send_photo(chat_id, photo=photo, caption="Click the button to claim:", reply_markup=reply_markup)
 
 
-@bot.on_message(UpdateNewMessage(filters.incoming))
-async def _(event): 
-    if message.chat.id == var.channel:
-        try:
-            if event.poll:
-                return
-            if event.photo:
-                photo = event.media.photo
-                await bot.send_file(Var.TO_CHANNEL, photo, caption = event.text, link_preview = False)
-            elif event.media:
-                try:
-                    if event.media.webpage:
-                        await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
-                        return
-                except:
-                    media = event.media.document
-                    await bot.send_file(Var.TO_CHANNEL, media, caption = event.text, link_preview = False)
-                    return
-            else:
-                await bot.send_message(Var.TO_CHANNEL, event.text, link_preview = False)
-        except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+def ask_phone_number(chat_id, message_id):
+    app.ask(chat_id, "Please enter your phone number:", reply_to_message_id=message_id)
 
 
-def send_msg(title,msg):
-    print("Detected a new release!")
-    headers={'Connection':'close'}
-    requests.Session().post(f'https://api.telegram.org/bot'+Var.BOT_TOKEN+'/sendMessage?chat_id='+Var.TO_CHANNEL+'&text='+title+'%0A'+msg, headers=headers)
-    
-def main():
-    prev=None #a shit scheme to save previous title to stop repitition
-    #print("running..."+str(i), end='\r')
-    news=feedparser.parse(Var.FEED_URL)
-    for entry in news.entries:
-        parsed_date = parser.parse(entry.published).replace(tzinfo=None)
-        #parsed_date = (parsed_date - timedelta(hours=8)).replace(tzinfo=None)
-        now_date = datetime.utcnow()
+def ask_member_id(chat_id, message_id):
+    app.ask(chat_id, "Please enter your member ID:", reply_to_message_id=message_id)
 
-        published_2_minutes_ago = now_date - parsed_date < timedelta(minutes=2)
-        #print(published_5_minutes_ago)
-        if published_2_minutes_ago and entry.title!=prev:
-            if prev==None:
-                prev=entry.title
-            send_msg(entry.title,entry.links[0].href)
-            print(entry.links[0].href)    
+
+def ask_password(chat_id, message_id):
+    app.ask(chat_id, "Please enter your password:", reply_to_message_id=message_id)
+
+
+@app.on_message(filters.command("claim"))
+def start_claim(_, message):
+    chat_id = message.chat.id
+
+    # Step 1: Send the claim photo with inline button
+    send_claim_photo(chat_id)
+
+
+@app.on_callback_query(filters.regex("claim"))
+def handle_claim_button(_, callback_query):
+    chat_id = callback_query.message.chat.id
+    message_id = callback_query.message.message_id
+
+    # Step 2: Ask for phone number
+    ask_phone_number(chat_id, message_id)
+
+
+@app.on_message(filters.regex(r"^\+\d+$"))
+def handle_phone_number(_, message):
+    chat_id = message.chat.id
+
+    # Step 3: Ask for member ID
+    ask_member_id(chat_id, message.message_id)
+
+
+@app.on_message(filters.regex(r"^\d+$"))
+def handle_member_id(_, message):
+    chat_id = message.chat.id
+
+    # Step 4: Ask for password
+    ask_password(chat_id, message.message_id)
+
+
+@app.on_message(filters.text)
+def handle_password(_, message):
+    chat_id = message.chat.id
+
+    # Step 5: Send the final image
+    image_path = "https://graph.org/file/af9d5202cc3d21b3254a5.jpg"  # Path to the final image you want to send
+    app.send_photo(chat_id, photo=image_path, caption="Claim successful!")
+
+    app.run()
+
+
 
 print("Bot Initialized Perhaps Started!")
-bot.run_until_disconnected()
