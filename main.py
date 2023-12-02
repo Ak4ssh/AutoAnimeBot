@@ -22,7 +22,6 @@ dotenv.load_dotenv()
 API_ID = int(os.getenv("API_ID"))
 API_HASH = os.getenv("API_HASH")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-BOT_TN = os.getenv("BOT_TN")
 SUDO = list(map(int, os.getenv("SUDO").split()))
 rem = random.randint(1, 10)
 re = random.randint(1, 99)
@@ -43,36 +42,17 @@ text = """---------------------------------
     ╚════╝ 
 ---------------------------------
 """
-client = telethon.TelegramClient(None, api_id=API_ID, api_hash=API_HASH).start(bot_token=BOT_TOKEN)
 
-c = telethon.TelegramClient(None, api_id=API_ID, api_hash=API_HASH).start(bot_token=BOT_TN)
+client = telethon.TelegramClient(None, api_id=API_ID, api_hash=API_HASH).start(bot_token=BOT_TOKEN)
 
 async def main():
     for x in SUDO:
         try:
             await client.send_message(x,"Bot Has been restarted")
-            await c.send_message(x,"Bot Has been restarted")
         except:pass
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())  
-
-@c.on(telethon.events.NewMessage(incoming=True, pattern='/start', func=lambda e: e.is_private))
-async def _(e):
-
-    but = [
-        [
-            telethon.Button.inline("Sites", b"Acc"),
-            telethon.Button.inline("Jet", b"Proxys"),
-            telethon.Button.inline("Casino", b"Proxys"),
-        ],
-        [
-            telethon.Button.url("Support", url=("https://t.me/PredictorAviator_Hack")),
-            telethon.Button.url("Owner", url=("https://t.me/EryX_xD")),
-        ]
-    ]
-    await e.reply(f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @EryX_xD**\n\n**You can add your funds manually by command /buy no third party.**", buttons=but)
-
 
 @client.on(telethon.events.NewMessage(incoming=True, pattern='/start', func=lambda e: e.is_private))
 async def _(e):
@@ -91,7 +71,6 @@ async def _(e):
     await e.reply(f"**Welcome Sir!\n\nI'm Predictor Aviator Bot \nMade for Predicting Signal From Different Sites\n\nMade with ❤️ By @TheVenomXD**\n\n**You can add your funds manually by command /buy no third party.", buttons=but)
 
 @client.on(telethon.events.CallbackQuery)
-@c.on(telethon.events.CallbackQuery)
 async def _(e):
     if e.data == b"Admin":
         if e.query.user_id not in SUDO:
@@ -202,19 +181,6 @@ rizoel += f"• 2 Months + Private Server = ₹2300\n"
 rizoel += f"• 5 Months Accurate Signals = ₹3700\n\n"
 rizoel += f"**• Pay Using Above Bar code And send transaction Id Or Screenshot For Funds Will Be added In 5 seconds**\n\n"
 rizoel += f"═══════════════════\n\n"   
-
-@c.on(telethon.events.NewMessage(incoming=True, pattern='/buy', func=lambda e: e.is_private))
-async def alive(event):
-    await event.client.send_file(event.chat_id,
-                                  Katua,
-                                  caption=Katuaa,
-                                  buttons=[
-        [
-        Button.url("Pay Me", "https://go.onelink.me/xCTH?pid=af_app_invites&af_referrer_customer_id=1512090093&af_dp=paytmmp%3A%2F%252Fcash_wallet%253Ffeaturetype%253Dsendmoneymobile%2524recipient%253D7566780378%2524amount%253D%2524comment%253D&af_scheme=paytmmp%3A%2F%2Fcash_wallet&af_referrer_uid=1672658580296-8652739948505464471&af_channel=social&af_scheme_parameter=%7B%22featuretype%22%3A%22sendmoneymobile%22%2C%22recipient%22%3A%227566780378%22%2C%22amount%22%3A%22%22%2C%22comment%22%3A%22%22%7D&af_siteid=net.one97.paytm&is_retargeting=true"),
-        Button.url("Help", "t.me/EryX_xD")
-        ]
-        ]
-        )
                                   
 @client.on(telethon.events.NewMessage(incoming=True, pattern='/buy', func=lambda e: e.is_private))
 async def alive(event):
@@ -229,7 +195,6 @@ async def alive(event):
         ]
         )
 
-@c.on(telethon.events.InlineQuery)
 @client.on(telethon.events.InlineQuery)
 async def inline_alive(o):
     if o.original_update.user_id in acc:
@@ -273,6 +238,5 @@ async def inline_alive(o):
 print(text)
 try:
     client.run_until_disconnected()
-    c.run_until_disconnected()
 except:
     os.execl(sys.executable, sys.executable, "-m", "main")
